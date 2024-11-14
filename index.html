@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CATCH THE THIEF - 요금제 선택</title>
-    <link rel="stylesheet" href="style.css">
+    <title>요금제 선택</title>
+    <link rel="stylesheet" href="styles.css">
     <script defer src="script.js"></script>
 </head>
 <body>
     <header class="navbar">
-        <div class="logo">CATCH THE THIEF !</div>
+        <div class="logo">CATCH THE THIEF!</div>
         <nav>
             <ul class="nav-links">
                 <li><a href="#notice">공지</a></li>
@@ -19,21 +19,12 @@
     </header>
     <main>
         <!-- 첫 화면 -->
-        <section id="main-section">
-            <img src="first.png" alt="Main Banner" class="main-image">
-            <h1 class="main-text">도둑을 잡아라! YOLOv8 기반 솔루션</h1>
-            <button class="btn" onclick="showAuthOptions()">지금 구독하기</button>
-        </section>
-
-        <!-- 로그인/회원가입 옵션 -->
-        <section id="auth-options" class="hidden">
-            <h2>로그인 또는 회원가입</h2>
-            <button class="btn" onclick="redirectTo('signup')">회원가입</button>
-            <button class="btn" onclick="redirectTo('login')">로그인</button>
-        </section>
-
-        <!-- 요금제 선택 화면 -->
-        <section id="pricing-section" class="hidden">
+        <div id="first-screen">
+            <img src="firstpage.png" alt="첫 화면 이미지" class="firstpage-img">
+            <button class="btn" onclick="navigateToLogin()">구독하기</button>
+        </div>
+        <!-- 요금제 선택 화면 (초기에는 숨김) -->
+        <div id="pricing-screen" class="hidden">
             <h1>요금제를 선택하세요</h1>
             <div class="pricing-container">
                 <!-- 월별 요금제 -->
@@ -69,7 +60,7 @@
                 <button class="btn" id="verify-btn">인증 후 다운로드</button>
                 <p id="message" class="hidden"></p>
             </div>
-        </section>
+        </div>
     </main>
     <footer>
         <p class="footer-text">Copyright © 2024. Park jinwoo, Lee hyein, Lee hyeonseo. All rights reserved.</p>
