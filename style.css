@@ -51,10 +51,33 @@ main h1 {
 
 /* 첫 화면 이미지 스타일 */
 .firstpage-img {
-    width: 80%;
-    max-width: 600px;
-    margin: 20px auto;
+    width: 80%; /* 이미지가 화면 폭의 80%를 차지 */
+    max-width: 600px; /* 최대 크기 600px */
+    height: auto; /* 비율 유지 */
+    margin: 20px auto; /* 위아래 20px, 좌우 중앙 정렬 */
+    display: block; /* 블록 요소로 변경하여 중앙 정렬 */
 }
+
+#first-screen {
+    width: 100%; /* 부모 요소가 화면 전체를 차지 */
+    max-width: 1200px; /* 최대 폭 제한 */
+    margin: 0 auto; /* 좌우 중앙 정렬 */
+    text-align: center; /* 내부 내용 가운데 정렬 */
+    padding: 20px; /* 여백 추가 */
+    overflow: hidden; /* 내부 콘텐츠가 부모를 넘지 않도록 */
+    position: relative; /* 다른 요소와 겹침 방지 */
+    z-index: 1; /* 이미지가 상위에 표시되도록 */
+    padding-top: 50px; /* 위쪽 공간 확보 */
+    padding-bottom: 50px; /* 아래쪽 공간 확보 */
+}
+
+/* 반응형 디자인 */
+@media screen and (max-width: 768px) {
+    .firstpage-img {
+        width: 100%; /* 작은 화면에서는 이미지가 화면에 꽉 차도록 */
+    }
+}
+
 
 /* 첫 화면 구독 버튼 */
 #first-screen .btn {
