@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CATCH THE THIEF</title>
+    <title>CATCH THE THIEF - 요금제 선택</title>
     <link rel="stylesheet" href="styles.css">
     <script defer src="script.js"></script>
 </head>
@@ -14,21 +14,29 @@
             <ul class="nav-links">
                 <li><a href="#notice">공지</a></li>
                 <li><a href="#developer">개발자</a></li>
-                <li><a href="#login">로그인</a></li>
-                <li><a href="#signup">회원가입</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <!-- 메인 이미지 섹션 -->
+        <!-- 첫 화면 -->
         <section id="main-section">
             <img src="first.png" alt="Main Banner" class="main-image">
             <h1 class="main-text">도둑을 잡아라! YOLOv8 기반 솔루션</h1>
+            <button class="btn" onclick="showAuthOptions()">지금 구독하기</button>
         </section>
-        <!-- 요금제 섹션 -->
-        <section id="pricing-section">
+
+        <!-- 로그인/회원가입 옵션 -->
+        <section id="auth-options" class="hidden">
+            <h2>로그인 또는 회원가입</h2>
+            <button class="btn" onclick="redirectTo('signup')">회원가입</button>
+            <button class="btn" onclick="redirectTo('login')">로그인</button>
+        </section>
+
+        <!-- 요금제 선택 화면 -->
+        <section id="pricing-section" class="hidden">
             <h1>요금제를 선택하세요</h1>
             <div class="pricing-container">
+                <!-- 월별 요금제 -->
                 <div class="plan">
                     <h2>월별 요금제</h2>
                     <p class="price">₩30,000 / 월</p>
@@ -40,6 +48,7 @@
                     </ul>
                     <button class="btn" onclick="showBankInfo('월별')">월별 시작</button>
                 </div>
+                <!-- 연간 요금제 -->
                 <div class="plan">
                     <h2>연간 요금제</h2>
                     <p class="price">₩25,000 / 월</p>
@@ -52,10 +61,44 @@
                     <button class="btn" onclick="showBankInfo('연간')">연간 시작</button>
                 </div>
             </div>
+            <div id="bank-details" class="hidden">
+                <p>계좌번호: <strong>123-456-789</strong></p>
+                <p>선택하신 요금제에 해당하는 금액을 위 계좌번호에 입금해주세요.<br>관리자가 확인 후에 인증번호를 보내드립니다.</p>
+                <p>문자로 받은 인증번호를 입력하세요:</p>
+                <input type="text" id="verification-code" placeholder="인증번호 입력">
+                <button class="btn" id="verify-btn">인증 후 다운로드</button>
+                <p id="message" class="hidden"></p>
+            </div>
         </section>
     </main>
     <footer>
         <p class="footer-text">Copyright © 2024. Park jinwoo, Lee hyein, Lee hyeonseo. All rights reserved.</p>
     </footer>
+
+    <script>
+        // 구독 버튼 클릭 시 로그인/회원가입 옵션 표시
+        function showAuthOptions() {
+            document.getElementById('main-section').classList.add('hidden');
+            document.getElementById('auth-options').classList.remove('hidden');
+        }
+
+        // 로그인/회원가입 버튼 클릭 시 페이지 이동
+        function redirectTo(page) {
+            if (page === 'signup') {
+                alert('회원가입 페이지로 이동합니다.');
+                // 회원가입 페이지로 이동
+            } else if (page === 'login') {
+                alert('로그인 페이지로 이동합니다.');
+                document.getElementById('auth-options').classList.add('hidden');
+                document.getElementById('pricing-section').classList.remove('hidden');
+            }
+        }
+
+        // 은행 정보 표시
+        function showBankInfo(planType) {
+            document.getElementById('bank-details').classList.remove('hidden');
+            alert(planType + ' 요금제를 선택하셨습니다. 계좌 정보를 확인하세요.');
+        }
+    </script>
 </body>
 </html>
