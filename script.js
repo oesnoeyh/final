@@ -20,28 +20,3 @@ function redirectTo(page) {
         pricingSection.classList.remove('hidden');
     }
 }
-
-// 은행 정보 표시
-function showBankInfo(planType) {
-    const bankDetails = document.getElementById('bank-details');
-    const message = document.getElementById('message');
-
-    bankDetails.classList.remove('hidden');
-    message.classList.add('hidden');
-    alert(planType + ' 요금제를 선택하셨습니다. 계좌 정보를 확인하세요.');
-}
-
-// 인증번호 검증
-document.getElementById('verify-btn').addEventListener('click', function () {
-    const verificationCode = document.getElementById('verification-code').value;
-    const message = document.getElementById('message');
-
-    if (verificationCode === '123456') {
-        message.textContent = '인증 성공! 파일 다운로드가 가능합니다.';
-        message.style.color = 'green';
-    } else {
-        message.textContent = '잘못된 인증번호입니다. 관리자(admin@example.com)에게 문의하세요.';
-        message.style.color = 'red';
-    }
-    message.classList.remove('hidden');
-});
