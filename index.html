@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CATCH THE THIEF - 요금제 선택</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
 </head>
 <body>
@@ -74,31 +74,5 @@
     <footer>
         <p class="footer-text">Copyright © 2024. Park jinwoo, Lee hyein, Lee hyeonseo. All rights reserved.</p>
     </footer>
-
-    <script>
-        // 구독 버튼 클릭 시 로그인/회원가입 옵션 표시
-        function showAuthOptions() {
-            document.getElementById('main-section').classList.add('hidden');
-            document.getElementById('auth-options').classList.remove('hidden');
-        }
-
-        // 로그인/회원가입 버튼 클릭 시 페이지 이동
-        function redirectTo(page) {
-            if (page === 'signup') {
-                alert('회원가입 페이지로 이동합니다.');
-                // 회원가입 페이지로 이동
-            } else if (page === 'login') {
-                alert('로그인 페이지로 이동합니다.');
-                document.getElementById('auth-options').classList.add('hidden');
-                document.getElementById('pricing-section').classList.remove('hidden');
-            }
-        }
-
-        // 은행 정보 표시
-        function showBankInfo(planType) {
-            document.getElementById('bank-details').classList.remove('hidden');
-            alert(planType + ' 요금제를 선택하셨습니다. 계좌 정보를 확인하세요.');
-        }
-    </script>
 </body>
 </html>
