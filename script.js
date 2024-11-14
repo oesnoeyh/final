@@ -1,46 +1,47 @@
-// 스크롤을 통해 요금제 섹션으로 이동
-document.querySelectorAll('.nav-links a').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
-
-// 계좌번호 표시 함수 (기존 코드 유지)
-function showBankInfo(planType) {
-    const bankDetails = document.getElementById('bank-details');
-    const messageElement = document.getElementById('message');
-
-    bankDetails.classList.remove('hidden');
-    messageElement.classList.add('hidden');
-    messageElement.textContent = '';
-    alert(`${planType} 요금제를 선택하셨습니다. 계좌 정보를 확인하세요.`);
+// 구독 버튼 클릭 시 로그인/회원가입 옵션 표시
+function showAuthOptions() {
+    const mainSection = document.getElementById('main-section');
+    const authOptions = document.getElementById('auth-options');
+    mainSection.classList.add('hidden');
+    authOptions.classList.remove('hidden');
 }
 
-// 인증번호 확인 함수 (기존 코드 유지)
-document.getElementById('verify-btn').addEventListener('click', () => {
-    const verificationCode = document.getElementById('verification-code').value;
-    const messageElement = document.getElementById('message');
+// 로그인/회원가입 버튼 클릭 시 페이지 이동
+function redirectTo(page) {
+    const authOptions = document.getElementById('auth-options');
+    const pricingSection = document.getElementById('pricing-section');
 
-    if (verificationCode === '1234') {
-        messageElement.textContent = '인증 성공! 다운로드가 시작됩니다.';
-        messageElement.style.color = '#00ff00';
-        messageElement.classList.remove('hidden');
-
-        setTimeout(() => {
-            window.location.href = 'files/your-program.exe';
-        }, 2000);
-    } else {
-        messageElement.textContent =
-            '잘못된 인증번호입니다. 관리자(admin@example.com)에게 문의하세요.';
-        messageElement.style.color = '#e50914';
-        messageElement.classList.remove('hidden');
+    if (page === 'signup') {
+        alert('회원가입 페이지로 이동합니다.');
+        // 회원가입 로직 구현
+    } else if (page === 'login') {
+        alert('로그인 성공! 요금제 화면으로 이동합니다.');
+        authOptions.classList.add('hidden');
+        pricingSection.classList.remove('hidden');
     }
+}
+
+// 은행 정보 표시
+function showBankInfo(planType) {
+    const bankDetails = document.getElementById('bank-details');
+    const message = document.getElementById('message');
+
+    bankDetails.classList.remove('hidden');
+    message.classList.add('hidden');
+    alert(planType + ' 요금제를 선택하셨습니다. 계좌 정보를 확인하세요.');
+}
+
+// 인증번호 검증
+document.getElementById('verify-btn').addEventListener('click', function () {
+    const verificationCode = document.getElementById('verification-code').value;
+    const message = document.getElementById('message');
+
+    if (verificationCode === '123456') {
+        message.textContent = '인증 성공! 파일 다운로드가 가능합니다.';
+        message.style.color = 'green';
+    } else {
+        message.textContent = '잘못된 인증번호입니다. 관리자(admin@example.com)에게 문의하세요.';
+        message.style.color = 'red';
+    }
+    message.classList.remove('hidden');
 });
